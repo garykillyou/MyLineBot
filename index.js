@@ -17,7 +17,6 @@ var server = app.listen(process.env.PORT || 8080, function () {
     console.log("App now running on port", port);
 });
 
-
 bot.on('message', function (event) {
     console.log(event); //把收到訊息的 event 印出來看看
     if (event.type === 'message' && event.message.type === 'text') {
@@ -40,7 +39,10 @@ bot.on('message', function (event) {
             }
         })
     }
-    else if (event.type === 'postback' && event.postback !== undefined) {
+});
+
+bot.on('postback', function (event) {
+    if (event.postback !== undefined) {
         let userPostback = event.postback.data;
         event.reply(`你的選擇是 (${userPostback})`);
     }
