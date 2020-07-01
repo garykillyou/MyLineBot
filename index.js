@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const linebot = require('linebot');
 const express = require('express');
 
